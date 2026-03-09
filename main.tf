@@ -65,11 +65,9 @@ resource "aws_iam_role_policy" "lambda_policy" {
       {
         Effect = "Allow"
         Action = [
-          "logs:CreateLogGroup",
-          "logs:CreateLogStream",
-          "logs:PutLogEvents"
+          "ssm:GetParameter"
         ]
-        Resource = "arn:aws:logs:*:*:*"
+        Resource = aws_ssm_parameter.dynamic_string.arn
       }
 
     ]
